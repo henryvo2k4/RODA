@@ -1,28 +1,18 @@
 # RODA
 
-<p align="center">
-  <img src="images/logo_main.png" width="160">
-</p>
+<div align="center">
+  <img src="images/logo_main.png" alt="RODA Logo" width="450"/>
 
-<h2 align="center">Road Monitoring & Incident Warning System</h2>
-
-<p align="center">
-  <strong>IoT · Embedded Systems · GIS · AI · Cloud</strong>
-</p>
-
-<p align="center">
-  An end-to-end IoT-GIS platform for monitoring road conditions,
-  detecting urban traffic incidents, and visualizing road data in real time.
-</p>
-
-<p align="center">
-  <a href="#overview">Overview</a> •
-  <a href="#system-architecture">Architecture</a> •
-  <a href="#embedded-system">Embedded</a> •
-  <a href="#ai--gis">AI & GIS</a> •
-  <a href="#applications">Applications</a> •
-  <a href="#results">Results</a>
-</p>
+  <h1>RODA (Road Monitoring System)</h1>
+  <p><b>An End-to-End Intelligent Transportation System (ITS) for Real-time Urban Infrastructure Monitoring</b></p>
+  
+  [![Hardware: ESP32](https://img.shields.io/badge/Hardware-ESP32-blue?logo=espressif)](https://www.espressif.com/)
+  [![Backend: Supabase](https://img.shields.io/badge/Backend-Supabase-3ECF8E?logo=supabase)](https://supabase.com/)
+  [![AI: YOLOv8](https://img.shields.io/badge/AI-YOLOv8-FF9D00?logo=ultralytics)](https://github.com/ultralytics/ultralytics)
+  [![App: Android](https://img.shields.io/badge/Mobile-Android_Native-3DDC84?logo=android)](https://developer.android.com/)
+  [![Web: Leaflet](https://img.shields.io/badge/Web-Leaflet_GIS-199900?logo=leaflet)](https://leafletjs.com/)
+  [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+</div>
 
 ---
 

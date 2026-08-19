@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+<title>RODA - Hệ thống quan trắc đường phố</title>
+
+<link rel="icon" type="image/png" href="image/logo_icon.png">
+
+<link rel="stylesheet" href="style.css">
+
+<!-- LEAFLET MAP -->
+<link rel="stylesheet"
+href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
+
+<!-- SEARCH BAR -->
+<link rel="stylesheet"
+href="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.css"/>
+
+<!-- ROUTING -->
+<link rel="stylesheet"
+href="https://unpkg.com/leaflet-routing-machine@latest/dist/leaflet-routing-machine.css"/>
+
+<!-- LEAFLET DRAW -->
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.draw/1.0.4/leaflet.draw.css"/>
+
+</head>
+
+
+<body>
+
+<h1 class="title">
+    <img src="image\logo_main.png" alt="RODA - Hệ thống quan trắc đường phố" class="logo-img">
+</h1>
+
+
+<!-- NÚT CHỨC NĂNG -->
+
+<button id="gpsBtn">📍 <span class="btn-text">Vị trí của tôi</span></button>
+
+<button id="routeBtn">🧭 <span class="btn-text">Chỉ đường</span></button>
+
+<button id="drawBtn">✏️ <span class="btn-text">Khoanh vùng</span></button>
+
+
+<!-- BẢN ĐỒ -->
+
+<div id="map"></div>
+
+
+
+<!-- DASHBOARD -->
+
+<div id="dashboard">
+    <div id="dashboard-tabs">
+        <button id="tab-stats" class="active" onclick="switchTab('stats')">⚠️ Cảnh báo</button>
+        <button id="tab-steps" onclick="switchTab('steps')">🧭 Chỉ đường</button>
+    </div>
+
+    <h3 id="dashboard-title">🧭 Thông tin cảnh báo</h3>
+
+    <div id="dashboardGrid">
+        <div id="routeSteps">
+            <p>Chưa có tuyến đường</p>
+        </div>
+
+        <div id="routeStats">
+            <p>🕳 Ổ gà: <span id="potholeRoute">0</span></p>
+            <p>🌊 Lũ lụt: <span id="floodRoute">0</span></p>
+            <p>🏗️ Thi công: <span id="constructionRoute">0</span></p>
+            <p>⚠️ Nguy hiểm: <span id="dangerRoute">0</span></p>
+            <p>🗂️ Tổng cảnh báo: <span id="warningRoute">0</span></p>
+        </div>
+    </div>
+</div>
+
+
+
+<!-- ========================= -->
+<!-- JAVASCRIPT -->
+<!-- ========================= -->
+
+<!-- TUF -->
+<script src="https://cdn.jsdelivr.net/npm/@turf/turf@6/turf.min.js"></script>
+
+<!-- LEAFLET -->
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+<!-- SEARCH -->
+<script src="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.js"></script>
+
+<!-- ROUTING -->
+<script src="https://unpkg.com/leaflet-routing-machine@latest/dist/leaflet-routing-machine.js"></script>
+
+<!-- LEAFLET DRAW -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet.draw/1.0.4/leaflet.draw.js"></script>
+
+<!-- SUPABASE -->
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+<!-- SCRIPT CHÍNH -->
+<script src="script.js"></script>
+
+</body>
+
+</html>

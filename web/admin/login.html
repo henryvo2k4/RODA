@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>Admin Login</title>
+
+<style>
+
+body{
+    margin:0;
+    font-family: Arial, Helvetica, sans-serif;
+
+    background: linear-gradient(135deg,#7dd3fc,#60a5fa,#6366f1);
+
+    height:100vh;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+}
+
+/* CARD LOGIN */
+
+.login-card{
+
+    background:white;
+
+    padding:40px;
+    width:320px;
+
+    border-radius:25px;
+
+    box-shadow:
+        0 20px 40px rgba(0,0,0,0.25),
+        inset 0 1px 0 rgba(255,255,255,0.6);
+
+    text-align:center;
+
+    animation:float 3s ease-in-out infinite;
+
+}
+
+/* hiệu ứng nổi nhẹ */
+
+@keyframes float{
+    0%{ transform:translateY(0px); }
+    50%{ transform:translateY(-6px); }
+    100%{ transform:translateY(0px); }
+}
+
+.login-card h2{
+    margin-bottom:25px;
+}
+
+/* INPUT */
+
+input{
+
+    width:90%;
+    padding:12px;
+
+    margin-bottom:15px;
+
+    border-radius:15px;
+
+    border:1px solid #ddd;
+
+    font-size:14px;
+
+    box-shadow: inset 0 2px 6px rgba(0,0,0,0.1);
+
+}
+
+/* BUTTON */
+
+button{
+
+    width:100%;
+
+    padding:12px;
+
+    border:none;
+
+    border-radius:20px;
+
+    font-size:16px;
+
+    font-weight:bold;
+
+    background:linear-gradient(135deg,#4ade80,#22c55e);
+
+    color:white;
+
+    cursor:pointer;
+
+    box-shadow:0 8px 18px rgba(0,0,0,0.25);
+
+    transition:all 0.2s;
+
+}
+
+button:hover{
+
+    transform:translateY(-2px);
+
+    box-shadow:0 12px 25px rgba(0,0,0,0.3);
+
+}
+
+button:active{
+
+    transform:translateY(1px);
+
+}
+
+</style>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+</head>
+
+<body>
+
+<div class="login-card">
+
+<h2>🚦 Admin Login</h2>
+
+<input id="email" placeholder="Email">
+
+<input id="password" type="password" placeholder="Password">
+
+<button onclick="login()">Login</button>
+
+</div>
+
+<script>
+
+const supabaseUrl = "https://sweqvobmlntyhyeuurfr.supabase.co";
+const supabaseKey = "sb_publishable_xsqRVFRoQSh0c9wzwc5vxA_Hw9aj9fF";
+
+const supabaseClient = supabase.createClient(
+    supabaseUrl,
+    supabaseKey
+);
+
+async function login(){
+
+    const email = document.getElementById("email").value;
+    const password = document.getElementById("password").value;
+
+    const { data, error } = await supabaseClient.auth.signInWithPassword({
+        email: email,
+        password: password
+    });
+
+    if(error){
+        alert("Sai tài khoản hoặc mật khẩu");
+        return;
+    }
+
+    window.location.href = "index.html";
+
+}
+
+</script>
+
+</body>
+</html>

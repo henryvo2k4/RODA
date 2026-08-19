@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quản lý Thiết bị - RODA</title>
+
+    <link rel="icon" type="image/png" href="../image/logo_icon.png">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="device.css">
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+</head>
+<body>
+
+    <div class="header">
+        <h2>📡 Quản lý Thiết bị</h2>
+        <button class="btn-add" onclick="openAddModal()">Thêm Thiết bị</button>
+    </div>
+
+    <div class="container">
+        <div class="device-grid" id="deviceGrid">
+            </div>
+    </div>
+
+    <div class="modal" id="addModal">
+        <div class="modal-content"> <h3>Đăng ký Node mới</h3>
+            <div class="form-group">
+                <label>Device ID (VD: NODE_01)</label>
+                <input type="text" id="devId" placeholder="Mã thiết bị">
+            </div>
+            <div class="form-group">
+                <label>Tên thiết bị</label>
+                <input type="text" id="devName" placeholder="Ví dụ: Trạm Huỳnh Tấn Phát">
+            </div>
+            <div class="form-group">
+                <label>Loại thiết bị</label>
+                <select id="devType" onchange="toggleConfigFields()">
+                    <option value="fixed">📍 Trạm cố định</option>
+                    <option value="mobile">🚌 Trạm di động</option>
+                </select>
+            </div>
+
+            <div id="fixedNodeConfig">
+                <div class="form-group">
+                    <label>📍 Chấm vị trí đặt trạm trên bản đồ:</label>
+                    <div id="pickerMap" style="height: 250px; border-radius: 8px; border: 1px solid #cbd5e1; margin-bottom: 15px; z-index: 1;"></div>
+                </div>
+
+                <div style="display: flex; gap: 10px;">
+                    <div class="form-group" style="flex: 1;">
+                        <label>Vĩ độ (Lat)</label>
+                        <input type="number" id="devLat" step="any" readonly style="background: #f1f5f9; color: #64748b;">
+                    </div>
+                    <div class="form-group" style="flex: 1;">
+                        <label>Kinh độ (Lng)</label>
+                        <input type="number" id="devLng" step="any" readonly style="background: #f1f5f9; color: #64748b;">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Khoảng cách Base đến mặt đường (cm)</label>
+                    <input type="number" id="devBase" placeholder="Dùng để tính mức ngập">
+                </div>
+            </div>
+
+            <div class="btn-group">
+                <button class="btn-cancel" onclick="closeModal('addModal')">Hủy</button>
+                <button class="btn-submit" onclick="saveDevice()">Lưu thiết bị</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal" id="infoModal">
+        <div class="modal-content">
+            <h3 id="infoName">Tên thiết bị</h3>
+            <p><b>ID:</b> <span id="infoId"></span></p>
+            
+            <div id="infoFixedParams">
+                <p><b>Tọa độ:</b> <span id="infoCoords"></span></p>
+                <p><b>Khoảng cách Base:</b> <span id="infoBase"></span> cm</p>
+            </div>
+            
+            <div class="history-list">
+                <h4>Lịch sử báo cáo gần đây</h4>
+                <div id="historyContainer">
+                    Đang tải dữ liệu...
+                </div>
+            </div>
+            
+            <div class="btn-group">
+                <button class="btn-cancel" onclick="closeModal('infoModal')">Đóng</button>
+                <button class="btn-delete" id="btnDeleteDevice">Xóa thiết bị</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="device.js"></script>
+
+</body>
+</html>

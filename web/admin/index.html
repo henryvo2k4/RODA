@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>RORA - Admin Panel</title>
+
+    <link rel="icon" type="image/png" href="../image/logo_icon.png">
+
+    <!-- STYLE TRANG CHÍNH -->
+    <link rel="stylesheet" href="../style.css">
+
+    <!-- STYLE ADMIN -->
+    <link rel="stylesheet" href="admin.css">
+
+    <!-- LEAFLET -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+
+    <!-- SUPABASE -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+</head>
+
+<body>
+
+    <div class="container">
+
+        <!-- SIDEBAR -->
+
+
+        <div class="sidebar">
+
+            <div class="sidebar-header">
+                <h2>
+                    <img src="../image/logo_icon.png" alt="RODA Logo" class="admin-logo">
+                    Quản lý báo cáo
+                </h2>
+
+                <div class="admin-profile">
+                    <span id="adminInfo"></span>
+                    <button class="logout-btn" onclick="logout()">
+                        Đăng xuất
+                    </button>
+                </div>
+            </div>
+
+            <div class="filter-buttons">
+                <button id="btn-pending" class="filter-btn active" onclick="setFilter('pending')">Chưa Duyệt</button>
+                <button id="btn-approved" class="filter-btn" onclick="setFilter('approved')">Đã Duyệt</button>
+                <button id="btn-all" class="filter-btn" onclick="setFilter('all')">Tất cả</button>
+            </div>
+            <div id="reportList"></div>
+
+        </div>
+
+        <!-- MAP -->
+        <div id="map"></div>
+
+        <div id="imgModal" class="img-modal" onclick="closeImage()">
+            <img id="imgPreview">
+        </div>
+
+        <div id="imgModal" class="img-modal" onclick="closeImage()">
+            <img id="imgPreview">
+        </div>
+
+    </div>
+
+    <script>
+
+        const supabaseUrl = "https://sweqvobmlntyhyeuurfr.supabase.co";
+        const supabaseKey = "sb_publishable_xsqRVFRoQSh0c9wzwc5vxA_Hw9aj9fF";
+
+        const supabaseClient = supabase.createClient(
+            supabaseUrl,
+            supabaseKey
+        );
+
+        async function checkLogin() {
+
+            const { data: { session } } = await supabaseClient.auth.getSession();
+
+            if (!session) {
+                window.location.href = "login.html";
+                return;
+            }
+
+            // hiển thị email admin
+            document.getElementById("adminInfo").innerHTML =
+                session.user.email;
+
+            // chỉ khi login thành công mới load admin.js
+            const script = document.createElement("script");
+            script.src = "admin.js";
+            document.body.appendChild(script);
+
+        }
+
+        async function logout() {
+
+            await supabaseClient.auth.signOut();
+            window.location.href = "login.html";
+
+        }
+
+        checkLogin();
+
+    </script>
+
+</body>
+
+</html>

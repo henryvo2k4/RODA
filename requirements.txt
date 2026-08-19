@@ -1,8 +1,0 @@
-fastapi
-uvicorn
-ultralytics
-pillow
-requests
-pydantic
-opencv-python-headless
-python-multipart

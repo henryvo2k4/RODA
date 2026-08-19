@@ -48,10 +48,6 @@ to monitor and manage urban road incidents.
 
 ## System Architecture
 
-<p align="center">
-  <img src="images/system-architecture.png" width="900">
-</p>
-
 RODA consists of four major layers:
 
 ```text
@@ -90,10 +86,6 @@ RODA uses two ESP32-based IoT nodes designed for different monitoring
 scenarios.
 
 ## Mobile Node
-
-<p align="center">
-  <img src="images/mobile-node.jpg" width="700">
-</p>
 
 The Mobile Node is designed to be installed on a moving vehicle for
 road-surface monitoring.
@@ -202,10 +194,6 @@ outages and synchronize the stored records when connectivity is restored.
 ---
 
 # Fixed Node
-
-<p align="center">
-  <img src="images/fixed-node.jpg" width="700">
-</p>
 
 The Fixed Node is designed for outdoor deployment at flood-prone locations.
 
@@ -440,10 +428,6 @@ The Android application provides mobile access to the RODA platform.
 
 ## Web Dashboard
 
-<p align="center">
-  <img src="images/web-dashboard.png" width="900">
-</p>
-
 The Web Dashboard provides centralized monitoring and management of road
 incident data.
 
@@ -582,10 +566,6 @@ RODA/
 # Author
 
 <p align="center">
-  <strong>Hen</strong><br>
+  <strong>Henry</strong><br>
   Embedded Systems & IoT Developer
 </p>
-
----
-
-> Developed as an individual graduation project.

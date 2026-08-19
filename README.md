@@ -14,10 +14,6 @@
   AI, Web and Android for intelligent road monitoring.
 </p>
 
-<p align="center">
-  <img src="images/roda-overview.png" width="850">
-</p>
-
 ---
 
 ## 📌 Overview
